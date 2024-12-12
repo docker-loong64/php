@@ -61,7 +61,7 @@ cat <<-EOH
 
 Maintainers: Tianon Gravi <admwiggin@gmail.com> (@tianon),
              Joseph Ferguson <yosifkit@gmail.com> (@yosifkit)
-GitRepo: https://github.com/docker-library/php.git
+GitRepo: https://github.com/docker-loong64/php.git
 EOH
 
 # prints "$2$1$3$1...$N"
@@ -92,7 +92,6 @@ for version; do
 	eval "variants=( $variants )"
 
 	versionAliases=(
-		$fullVersion
 		$version
 		${aliases[$version]:-}
 	)
@@ -142,7 +141,7 @@ for version; do
 		variantAliases=( "${variantAliases[@]//latest-/}" )
 
 		variantParent="$(awk 'toupper($1) == "FROM" { print $2 }' "$dir/Dockerfile")"
-		variantArches="${parentRepoToArches[$variantParent]}"
+		variantArches="loong64"
 
 		commit="$(dirCommit "$dir")"
 
